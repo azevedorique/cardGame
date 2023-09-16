@@ -2,13 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
-    private String nome;
     private List<String> cartas;
     private boolean disponibilidade;
     private List<String> inventario;
 
     public Deck(String nome) {
-        this.nome = nome;
         this.cartas = new ArrayList<>();
         this.disponibilidade = false;
         this.inventario = new ArrayList<>();
