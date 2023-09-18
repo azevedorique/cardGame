@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  public class Arena {
+=======
+public class Arena {
+>>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c
     private Lobby jogador1;
     private Lobby jogador2;
     private Carta[][] campoJogador1;
@@ -49,4 +53,8 @@
         // Lógica para imprimir o estado atual da partida, campos, pontos de vida, etc.
         // Você pode implementar essa lógica de acordo com as suas necessidades.
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c

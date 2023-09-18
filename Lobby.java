@@ -13,6 +13,12 @@ public class Lobby {
         this.modoJogo = modoJogo;
         this.disponibilidade = false;
     }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public void selecionarDeck() {
         // Lógica para o jogador selecionar o deck

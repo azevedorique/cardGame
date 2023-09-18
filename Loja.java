@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  public class Loja {
+=======
+public class Loja {
+>>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c
     private String nCartao;
     private String verif;
 
@@ -26,4 +30,8 @@ public Loja(String nCartao, String verif){
     public class buyBooster {
         
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c
