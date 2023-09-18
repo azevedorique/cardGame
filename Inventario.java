@@ -1,4 +1,4 @@
-public class Inventario {
+ public class Inventario {
     private Carta[] carta = new Carta[200];
     private int nivelAtual;
     private int cardCoins;
