@@ -4,12 +4,30 @@ import java.util.List;
 public class Deck {
     private List<String> cartas;
     private boolean disponibilidade;
-    private List<String> inventario;
+    private List<String> inventario2;
 
     public Deck(String nome) {
         this.cartas = new ArrayList<>();
         this.disponibilidade = false;
-        this.inventario = new ArrayList<>();
+        this.inventario2 = new ArrayList<>();
+    }
+    public List<String> getCartas() {
+        return cartas;
+    }
+    public void setCartas(List<String> cartas) {
+        this.cartas = new ArrayList<>();
+    }
+    public boolean getDisponibilidade() {
+        return disponibilidade;
+    }
+    public void setDisponibilidade (boolean disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+    public List<String> getInventario2() {
+        return inventario2;
+    }
+    public void setInventario2(List<String> inventario2) {
+        this.inventario2 = new ArrayList<>();
     }
 
     public void adicionarCarta(String carta) {
@@ -39,7 +57,7 @@ public class Deck {
             return false; // Não é possível adicionar mais cartas repetidas (exceto mana).
         }
 
-        return inventario.contains(carta); // Verifica se a carta está no inventário.
+        return inventario2.contains(carta); // Verifica se a carta está no inventário.
     }
 
     private int contarCartasNoDeck(String carta) {
@@ -53,11 +71,11 @@ public class Deck {
     }
 
     private void removerDoInventario(String carta) {
-        inventario.remove(carta);
+        inventario2.remove(carta);
     }
 
     private void adicionarAoInventario(String carta) {
-        inventario.add(carta);
+        inventario2.add(carta);
     }
 
     private void atualizarDisponibilidade() {
