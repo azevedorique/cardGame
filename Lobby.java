@@ -1,17 +1,17 @@
-import java.util.ArrayList;
+ 
 import java.util.List;
 
 public class Lobby {
     private String nome;
-    private List<String> cartas;
+    private List<String> cartas2;
     private String modoJogo;
-    private boolean disponibilidade;
+    private boolean disponibilidade2;
 
-    public Lobby(String nome, List<String> cartas, String modoJogo) {
+    public Lobby(String nome, List<String> cartas2, String modoJogo) {
         this.nome = nome;
-        this.cartas = cartas;
+        this.cartas2 = cartas2;
         this.modoJogo = modoJogo;
-        this.disponibilidade = false;
+        this.disponibilidade2 = false;
     }
     public String getNome() {
         return nome;
@@ -19,11 +19,30 @@ public class Lobby {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public List<String> getCartas2() {
+        return cartas2;
+    }
+    public void setCartas2(List<String> cartas2) {
+        this.cartas2 = cartas2;
+    }
+    public String getModo() {
+        return modoJogo;
+    }
+    public void setModo(String modoJogo) {
+        this.modoJogo = modoJogo;
+    }
+    public boolean getDisponibilidade2() {
+        return disponibilidade2;
+    }
+    public void setDisponibilidade2(boolean disponibilidade2) {
+        this.disponibilidade2 = disponibilidade2;
+    }
+
 
     public void selecionarDeck() {
         // Lógica para o jogador selecionar o deck
         // Pode envolver a interface do usuário ou outro método de escolha.
-        disponibilidade = true; // Assumindo que o deck agora está disponível para o jogo.
+        disponibilidade2 = true; // Assumindo que o deck agora está disponível para o jogo.
     }
 
     public void selecionarModoJogo(String modo) {
@@ -51,7 +70,7 @@ public class Lobby {
     }
 
     public boolean isDisponivel() {
-        return disponibilidade;
+        return disponibilidade2;
     }
 
     public String getModoJogo() {
