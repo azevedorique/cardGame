@@ -16,42 +16,6 @@ public class Arena {
         this.pontosVidaJogador1 = 20;
         this.pontosVidaJogador2 = 20;
     }
-    public Lobby getJogador1() {
-        return jogador1;
-    }
-    public void setJogador1(Lobby jogador1) {
-        this.jogador1 = jogador1;
-    }
-    public Lobby getJogador2() {
-        return jogador2;
-    }
-    public void setJogador2(Lobby jogador2) {
-        this.jogador2 = jogador2;
-    }
-    public Carta[][] getCampoJogador1() {
-        return campoJogador1;
-    }
-    public void setCampoJogador1(Carta[][] campoJogador1) {
-        this.campoJogador1 = campoJogador1;
-    }
-    public Carta[][] getCampoJogador2() {
-        return campoJogador2;
-    }
-    public void setCampoJogador2(Carta[][] campoJogador2) {
-        this.campoJogador2 = campoJogador2;
-    }
-    public int getPontosVidaJogador1() {
-        return pontosVidaJogador1;
-    }
-    public void setPontosVidaJogador1(int pontosVidaJogador1) {
-        this.pontosVidaJogador1 = pontosVidaJogador1;
-    }
-    public int getPontosVidaJogador2() {
-        return pontosVidaJogador2;
-    }
-    public void setPontosVidaJogador2(int pontosVidaJogador2) {
-        this.pontosVidaJogador2 = pontosVidaJogador2;
-    }
 
 
     public void iniciarPartida() {

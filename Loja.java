@@ -1,14 +1,17 @@
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.List;
  public class Loja {
-=======
-public class Loja {
->>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c
+
     private String nCartao;
     private String verif;
+    private int cardCoins;
+    private List<Carta> inventario;
 
 public Loja(String nCartao, String verif){
         this.nCartao = nCartao;
         this.verif = verif;
+        this.cardCoins = 0;
+         this.inventario = new ArrayList<>();
     }
 
     public String getnCartao() {
@@ -26,12 +29,43 @@ public Loja(String nCartao, String verif){
     public void setVerif(String verif) {
         this.verif = verif;
     }
-
-    public class buyBooster {
-        
+  public int getCardCoins() {
+    return cardCoins;
+  }
+  public void setCardCoins(int cardCoins) {
+    this.cardCoins = cardCoins;
+  }
+  public List<Carta> getInventario() {
+        return inventario;
     }
-<<<<<<< HEAD
+
+    public void setInventario(List<Carta> inventario) {
+        this.inventario = inventario;
+    }
+
+    public void buyBooster() {
+       int precoBooster = 200;
+       if (cardCoins >= precoBooster) {
+        this.cardCoins = precoBooster - cardCoins;
+
+        List<Carta> booster = <>(12);
+
+        for (Carta card : booster) {
+            adicionarAoInventario(card);
+        }
+        System.out.println("Booster adquirido");
+        if (Inventario.getCarta() >=3) {
+            int valor = 20;
+           this.cardcoins = cardcoins + valor;
+           System.out.println("Você já tem 3 cartas desse tipo! No lugar das cartas você irá receber " + valor + " cardcoins");
+
+        }
+       }
+       else {
+        System.out.println("Dinheiro insuficiente");
+       }
+    
+    }
+
 }
-=======
-}
->>>>>>> 0875a6fdaaf1593900d8c3a70db472e3ac68915c
+

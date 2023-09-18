@@ -1,4 +1,4 @@
- 
+ import java.util.ArrayList;
 import java.util.List;
 
 public class Lobby {
@@ -19,24 +19,7 @@ public class Lobby {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<String> getCartas2() {
-        return cartas2;
-    }
-    public void setCartas2(List<String> cartas2) {
-        this.cartas2 = cartas2;
-    }
-    public String getModo() {
-        return modoJogo;
-    }
-    public void setModo(String modoJogo) {
-        this.modoJogo = modoJogo;
-    }
-    public boolean getDisponibilidade2() {
-        return disponibilidade2;
-    }
-    public void setDisponibilidade2(boolean disponibilidade2) {
-        this.disponibilidade2 = disponibilidade2;
-    }
+    
 
 
     public void selecionarDeck() {

@@ -11,24 +11,7 @@ public class Deck {
         this.disponibilidade = false;
         this.inventario2 = new ArrayList<>();
     }
-    public List<String> getCartas() {
-        return cartas;
-    }
-    public void setCartas(List<String> cartas) {
-        this.cartas = new ArrayList<>();
-    }
-    public boolean getDisponibilidade() {
-        return disponibilidade;
-    }
-    public void setDisponibilidade (boolean disponibilidade) {
-        this.disponibilidade = disponibilidade;
-    }
-    public List<String> getInventario2() {
-        return inventario2;
-    }
-    public void setInventario2(List<String> inventario2) {
-        this.inventario2 = new ArrayList<>();
-    }
+     
 
     public void adicionarCarta(String carta) {
         if (podeAdicionarCarta(carta)) {
