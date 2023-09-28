@@ -6,8 +6,8 @@ public class Arena {
     private Lobby jogador2;
     private Carta[][] campoJogador1;
     private Carta[][] campoJogador2;
-    private int pontosVidaJogador1;
-    private int pontosVidaJogador2;
+    protected int pontosVidaJogador1;
+    protected int pontosVidaJogador2;
 
     public Arena(Lobby jogador1, Lobby jogador2) {
         this.jogador1 = jogador1;
@@ -49,7 +49,7 @@ public class Arena {
         }
     }
 
-    private void imprimirEstadoPartida() {
+    protected void imprimirEstadoPartida() {
         // Lógica para imprimir o estado atual da partida, campos, pontos de vida, etc.
         // Você pode implementar essa lógica de acordo com as suas necessidades.
     }
