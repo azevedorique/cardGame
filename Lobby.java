@@ -1,6 +1,6 @@
-
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Lobby {
     private String nome;
@@ -14,14 +14,14 @@ public class Lobby {
         this.modoJogo = modoJogo;
         this.disponibilidade2 = false;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-
 
     public void selecionarDeck() {
         // Lógica para o jogador selecionar o deck
@@ -37,19 +37,33 @@ public class Lobby {
 
     public boolean buscarAdversario(List<Lobby> lobbies) {
         // Lógica para buscar um adversário com um deck disponível e no mesmo modo de jogo.
-        for (Lobby lobby : lobbies) {
-            if (lobby != this && lobby.isDisponivel() && lobby.getModoJogo().equals(modoJogo)) {
-                // Encontrou um adversário disponível no mesmo modo de jogo.
-                iniciarPartida(this, lobby);
+        if (modoJogo.equals("Modo Dupla")) {
+            // Modo de jogo em dupla
+            List<Lobby> lobbiesDisponiveis = new ArrayList<>();
+            for (Lobby lobby : lobbies) {
+                if (lobby != this && lobby.isDisponivel() && lobby.getModoJogo().equals("Modo Dupla")) {
+                    lobbiesDisponiveis.add(lobby);
+                }
+            }
+            if (lobbiesDisponiveis.size() >= 2) {
+                // Encontrou pelo menos dois jogadores disponíveis no modo de jogo em dupla.
+                Random random = new Random();
+                int index1 = random.nextInt(lobbiesDisponiveis.size());
+                int index2;
+                do {
+                    index2 = random.nextInt(lobbiesDisponiveis.size());
+                } while (index2 == index1);
+
+                iniciarPartida(this, lobbiesDisponiveis.get(index1), lobbiesDisponiveis.get(index2));
                 return true;
             }
         }
-        return false; // Não encontrou um adversário disponível.
+        return false; // Não encontrou um adversário disponível ou não está no modo de jogo em dupla.
     }
 
-    private void iniciarPartida(Lobby jogador1, Lobby jogador2) {
-        // Lógica para iniciar a partida com os dois jogadores.
-        Arena arena = new Arena(jogador1, jogador2);
+    private void iniciarPartida(Lobby jogador1, Lobby jogador2, Lobby jogador3) {
+        // Lógica para iniciar a partida com os dois jogadores em dupla.
+        ArenaDupla arena = new ArenaDupla(jogador1, jogador2, jogador3);
         arena.iniciarPartida();
     }
 
