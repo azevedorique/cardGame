@@ -74,4 +74,38 @@ public class Lobby {
     public String getModoJogo() {
         return modoJogo;
     }
+
+    public Object getDeck() {
+        return null;
+    }
+
+    public int getManaMaxima() {
+        return 0;
+    }
+
+    public void setManaMaxima(int i) {
+    }
+
+    public void adicionarCartaNaMao(Carta cartaSacada) {
+    }
+
+    public int getTamanhoMao() {
+        return 0;
+    }
+
+    public Carta getCartaNaMao(int posicaoMao) {
+        return null;
+    }
+
+    public void removerCartaDaMao(int posicaoMao) {
+    }
+
+    public void diminuirPontosVida(int dano) {
+    }
+
+    public void adicionarCartaAoCemiterio(Carta cartaAtiva) {
+    }
+
+    public void adicionarCardCoins(int i) {
+    }
 }

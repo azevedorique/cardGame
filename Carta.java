@@ -86,4 +86,7 @@ public class Carta {
            this.quantidade = Math.min(quantidade,3);
         }
     }
+    public int getPontosVida() {
+        return 0;
+    }
 }
