@@ -3,8 +3,8 @@ public class Carta {
     private String imagem;
     private String tipo;
     private String raridade;
-    private int ataque;
-    private int defesa;
+    protected int ataque;
+    protected int defesa;
     private int custo;
     private int habilidade = 0;
     private int quantidade;
@@ -24,6 +24,8 @@ public class Carta {
         else {
            this.quantidade = Math.min(quantidade,3);
         }
+    }
+    public Carta() {
     }
     public String getNome() {
         return nome;
