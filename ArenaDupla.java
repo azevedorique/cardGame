@@ -8,11 +8,14 @@ public class ArenaDupla extends Arena {
         this.jogador4 = jogador4;
     }
 
+    public ArenaDupla(Lobby jogador1, Lobby jogador2, Lobby jogador32) {
+    }
+
     @Override
     public void iniciarPartida() {
         System.out.println("A partida em dupla começou!");
 
-        while (super.pontosVidaJogador1 > 0 && super.pontosVidaJogador2 > 0) {
+        while (super.getPontosVidaJogador1() > 0 && super.getPontosVidaJogador2() > 0) {
             // Lógica da rodada em dupla
             // Implemente a lógica do jogo aqui, levando em conta os quatro jogadores.
             // Atualize os campos e pontos de vida dos jogadores conforme as jogadas.
@@ -42,5 +45,8 @@ public class ArenaDupla extends Arena {
         } else {
             System.out.println("Jogadores 1 e 3 venceram!");
         }
+    }
+
+    private void imprimirEstadoPartida() {
     }
 }
