@@ -19,7 +19,38 @@ public class Loja {
         this.promocao = promocao;
     }
 
-    // Getters e setters para os atributos
+    public String getCartao() {
+        return nCartao;
+    }
+    public void setCartao(String nCartao) {
+        this.nCartao = nCartao;
+    }
+    public String getVerif() {
+        return verif;
+    }
+    public void setVerif(String verif) {
+        this.verif = verif;
+    }
+    public int getCardCoins() {
+        return cardCoins;
+    }
+    public void setCardCoins(int cardCoins) {
+        this.cardCoins = cardCoins;
+    }
+    public List<Carta> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(List<Carta> inventario) {
+        this.inventario = inventario;
+    }
+     public boolean isPromocao() {
+        return promocao;
+    }
+
+    public void setPromocao(boolean promocao) {
+        this.promocao = promocao;
+    }
 
     public void adicionarAoInventario(Carta carta) {
         inventario.add(carta);
@@ -66,8 +97,15 @@ public class Loja {
     }
 
     public int contarCartasTipoEspecifico() {
-        // Implemente a lógica para contar as cartas de um tipo específico no inventário aqui
-        return 0; // Substitua por sua implementação real
+        int contador = 0;
+        Carta carta = new Carta();
+        
+        for (Carta card : inventario) {
+            if (card.getTipo().equals(carta.getTipo())) {
+                contador++;
+            }
+        }
+        return contador;
     }
 }
 
