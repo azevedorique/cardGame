@@ -10,17 +10,14 @@ public class Usuario {
     private int[] decks = new int[5];
     private int saldo = 0;
 
-    public Usuario(String user, int cpf, int senha, int idade, String sexo, String email, int nivel, Inventario inventario, int[] decks, int saldo) {
+    public Usuario(String user, int cpf, int senha, int idade, String sexo, String email, Inventario inventario) {
         this.user = user;
         this.cpf = cpf;
         this.senha = senha;
         this.idade = idade;
         this.sexo = sexo;
         this.email = email;
-        this.nivel = nivel;
         this.inventario = inventario;
-        this.decks = decks;
-        this.saldo = saldo;
     }
      public String getUser() {
         return user;

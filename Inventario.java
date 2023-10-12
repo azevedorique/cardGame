@@ -3,8 +3,7 @@
     private int nivelAtual;
     private int cardCoins;
 
-    public Inventario(Carta[] carta, int nivelAtual, int cardCoins) {
-        this.carta = carta;
+    public Inventario( int nivelAtual, int cardCoins) {
         this.nivelAtual = nivelAtual;
         this.cardCoins = cardCoins;
     }

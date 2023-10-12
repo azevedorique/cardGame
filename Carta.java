@@ -9,7 +9,7 @@ public class Carta {
     private int habilidade = 0;
     private int quantidade;
 
-    public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, int habilidade, int quantidade) {
+    public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, int quantidade) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
@@ -17,7 +17,6 @@ public class Carta {
         this.ataque = ataque;
         this.defesa = defesa;
         this.custo = custo;
-        this.habilidade = habilidade;
         if (tipo.equals("Mana")) {
             this.quantidade = quantidade;
         }

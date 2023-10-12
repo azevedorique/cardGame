@@ -42,7 +42,7 @@ public class Arena {
             turno(jogador1, jogador2);
         } else {
             System.out.println("Jogador 2 começa.");
-            turno(jogador2, jogador1);
+            turno2(jogador2, jogador1);
         }
     }
 
@@ -125,7 +125,7 @@ public class Arena {
         return pontosVidaJogador2;
     }
 
-    private void turno(Lobby jogadorAtivo, Lobby jogadorOponente) {
+    private void turno2(Lobby jogadorAtivo, Lobby jogadorOponente) {
         System.out.println("Turno do Jogador " + jogadorAtivo.getNome() + ".");
 
         calcularDano(jogadorAtivo, jogadorOponente);
@@ -137,7 +137,7 @@ public class Arena {
             terminarPartida(jogador1, jogador2);
         }
 
-        turno(jogadorOponente, jogadorAtivo);
+        turno2(jogadorOponente, jogadorAtivo);
     }
 
     private void calcularDano(Lobby jogadorAtivo, Lobby jogadorOponente) {
