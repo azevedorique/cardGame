@@ -8,7 +8,7 @@ public class ArenaDupla extends Arena {
         this.jogador4 = jogador4;
     }
 
-    public ArenaDupla(Lobby jogador1, Lobby jogador2, Lobby jogador32) {
+    public ArenaDupla(Lobby jogador1, Lobby jogador2, Lobby jogador3) {
     }
 
     @Override
