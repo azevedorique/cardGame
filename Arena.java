@@ -31,7 +31,7 @@ public class Arena {
         this.cemiterioJogador1 = new Carta[100];
         this.cemiterioJogador2 = new Carta[100];
     }
-    private void sacar(Lobby jogador,Deck deck) {
+    public void sacar(Lobby jogador,Deck deck) {
         if (jogador.getDeck().getQuantidadeCartas() >= 7) {
             Carta cartaSacada = ((Object) jogador.getDeck()).sacarCartaAleatoria();
             String cartaNoDeck;

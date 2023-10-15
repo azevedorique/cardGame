@@ -12,6 +12,35 @@ public class ArenaDupla extends Arena {
     }
 
     @Override
+    public void sacar(Lobby jogador,Deck deck) {
+        if (jogador.getDeck().getQuantidadeCartas() >= 7) {
+            Carta cartaSacada = ((Object) jogador.getDeck()).sacarCartaAleatoria();
+            String cartaNoDeck;
+             for (int i = 0; i < 7; i++) {
+                deck.removerCarta(cartaNoDeck);
+                jogador.adicionarCartaNaMao(cartaSacada);
+             }
+             int cartasParaRetornar = Math.min(5,jogador.getTamanhoMao());
+             for (int i = 0; i < cartasParaRetornar; i++) {
+                jogador.removerCartaDaMao(i);
+                deck.adicionarCarta(cartaNoDeck);
+             }
+             for (int i = 0; i < cartasParaRetornar; i++) {
+                deck.removerCarta(cartaNoDeck);
+                jogador.adicionarCartaNaMao(cartaSacada);
+             }
+         
+
+            
+        } else {
+            System.out.println("Não há cartas suficientes no deck para fazer um saque.");
+    }
+    }
+
+
+
+
+    @Override
     public void iniciarPartida() {
         System.out.println("A partida em dupla começou!");
 
