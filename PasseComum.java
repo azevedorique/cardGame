@@ -29,12 +29,12 @@ public class PasseComum extends Progresso{
     private void abrirBooster() {
      System.out.println("Você ganhou um booster comum");
      for (int i = 1; i <= 12; i++) {
-        String carta = gerarCartaAleatoria();
+        Carta carta = gerarCartaAleatoria();
         System.out.println("Carta " + carta + " adquirida");
      }
     }
-    private String gerarCartaAleatoria() {
-        String[] cartas = {"carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12"};
+    private Carta gerarCartaAleatoria() {
+        Carta[] cartas = new Carta[12];
         Random random = new Random();
         int indice = random.nextInt(cartas.length);
         return cartas[indice];
