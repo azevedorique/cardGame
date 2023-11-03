@@ -88,4 +88,8 @@ public class Carta {
     public int getPontosVida() {
         return 0;
     }
+
+    public interface Ativacao{
+        public void ativarHabilidade(Habilidade habilidade);
+    }
 }
