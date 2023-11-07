@@ -31,13 +31,24 @@ public class CartaUnica extends Carta {
         this.habilidadePadrao = habilidadePadrao;
     }
 
-
-
     private Habilidade gerarHabilidadeAleatoria() {
         Habilidade[] habilidades = Habilidade.values();
         Random random = new Random();
         int index = random.nextInt(habilidades.length);
         return habilidades[index];
  
+    }
+
+    public void ativarHabilidade(Habilidade habilidade){
+        if (habilidadePadrao != null) {
+            String[] habilidades = habilidadePadrao.split(", ");
+            for (String hab : habilidades) {
+                System.out.println("Ativando habilidade: " + hab);
+            }
+        } else if (habilidade != null) {
+            System.out.println("Ativando habilidade: " + habilidade);
+        } else {
+            System.out.println("Carta não possui habilidades.");
+        }
     }
 }

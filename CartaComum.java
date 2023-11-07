@@ -29,10 +29,19 @@ public class CartaComum extends Carta {
         this.habilidadePadrao = habilidadePadrao;
     }
 
-
     private String gerarHabilidadeAleatoria() {
         String[] habilidades = {"Habilidade1", "Habilidade2", "Habilidade3"};
         int indiceAleatorio = (int) (Math.random() * habilidades.length);
         return habilidades[indiceAleatorio];
+    }
+
+    public void ativarHabilidade(Habilidade habilidade){
+        if (habilidadePadrao != null) {
+            System.out.println("Ativando habilidade padrão: " + habilidadePadrao);
+        } else if (habilidade != null) {
+            System.out.println("Ativando habilidade: " + habilidade);
+        } else {
+            System.out.println("Carta não possui habilidades.");
+        }
     }
 }
