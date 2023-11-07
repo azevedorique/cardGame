@@ -1,4 +1,4 @@
-public class CartaComum extends Carta {
+public class CartaComum extends Carta implements Ativacao{
     private int ataque;
     private int defesa;
     private String habilidadePadrao;
