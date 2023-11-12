@@ -58,24 +58,30 @@ public class Loja {
 
     public void buyBooster() {
         int precoBooster = promocao ? 300 : 200; // Preço 50% mais caro se estiver em promoção
-        if (cardCoins >= precoBooster) {
-            this.cardCoins -= precoBooster;
-            
-            List<Carta> booster = abrirBooster();
-
-            for (Carta card : booster) {
-                adicionarAoInventario(card);
+        try {
+            if (cardCoins >= precoBooster) {
+                this.cardCoins -= precoBooster;
+                
+                List<Carta> booster = abrirBooster();
+    
+                for (Carta card : booster) {
+                    adicionarAoInventario(card);
+                }
+                System.out.println("Booster adquirido");
+                if (contarCartasTipoEspecifico() >= 3) {
+                    int valor = 20;
+                    this.cardCoins += valor;
+                    System.out.println("Você já tem 3 cartas desse tipo! No lugar das cartas você irá receber " + valor + " cardcoins");
+                }
+            } else  {
+                throw new InsuficientCoinException(cardCoins);
+                } 
             }
-            System.out.println("Booster adquirido");
-            if (contarCartasTipoEspecifico() >= 3) {
-                int valor = 20;
-                this.cardCoins += valor;
-                System.out.println("Você já tem 3 cartas desse tipo! No lugar das cartas você irá receber " + valor + " cardcoins");
+                catch (InsuficientCoinException e1) {
+                    e1.getMessage();
             }
-        } else {
-            System.out.println("Dinheiro insuficiente");
         }
-    }
+    
 
     public List<Carta> abrirBooster() {
         List<Carta> booster = new ArrayList<>(12);
