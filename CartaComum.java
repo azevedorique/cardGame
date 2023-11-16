@@ -1,7 +1,9 @@
+import java.util.Random;
+
 public class CartaComum extends Carta implements Ativacao{
     private int ataque;
     private int defesa;
-    private String habilidadePadrao;
+    private Habilidade habilidadePadrao;
 
     
     public CartaComum() {
@@ -22,17 +24,19 @@ public class CartaComum extends Carta implements Ativacao{
     public void setDefesa(int defesa) {
         this.defesa = defesa;
     }
-    public String getHabilidadePadrao() {
+    public Habilidade getHabilidadePadrao() {
         return habilidadePadrao;
     }
-    public void setHabilidadePadrao(String habilidadePadrao) {
+    public void setHabilidadePadrao(Habilidade habilidadePadrao) {
         this.habilidadePadrao = habilidadePadrao;
     }
 
-    private String gerarHabilidadeAleatoria() {
-        String[] habilidades = {"Habilidade1", "Habilidade2", "Habilidade3"};
-        int indiceAleatorio = (int) (Math.random() * habilidades.length);
-        return habilidades[indiceAleatorio];
+      private Habilidade gerarHabilidadeAleatoria() {
+        Habilidade[] habilidades = Habilidade.values();
+        Random random = new Random();
+        int index = random.nextInt(habilidades.length);
+        return habilidades[index];
+ 
     }
 
     public void ativarHabilidade(Habilidade habilidade){
