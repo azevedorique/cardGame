@@ -1,6 +1,6 @@
 public class Usuario {
     private String user;
-    private int cpf;
+    private String cpf;
     private int senha;
     private int idade;
     private String sexo;
@@ -10,7 +10,7 @@ public class Usuario {
     private int[] decks = new int[5];
     private int saldo = 0;
 
-    public Usuario(String user, int cpf, int senha, int idade, String sexo, String email, Inventario inventario) {
+    public Usuario(String user, String cpf, int senha, int idade, String sexo, String email, Inventario inventario) {
         this.user = user;
         this.cpf = cpf;
         this.senha = senha;
@@ -26,10 +26,10 @@ public class Usuario {
     public void setUser(String user) {
         this.user = user;
     }
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
      public int getSenha() {
