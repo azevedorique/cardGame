@@ -1,21 +1,14 @@
-import java.util.Arrays;
+  
 import java.util.Random;
 
 public class Arena {
-    private Lobby jogador1;
-    private Lobby jogador2;
-    private Carta[][] campoJogador1;
-    private Carta[][] campoJogador2;
+    protected Lobby jogador1;
+    protected Lobby jogador2;
+    protected Carta[][] campoJogador1;
+    protected Carta[][] campoJogador2;
     protected int pontosVidaJogador1;
     protected int pontosVidaJogador2;
-    private Carta[] maoJogador1;
-    private Carta[] maoJogador2;
-    private int manaMaximaJogador1;
-    private int manaMaximaJogador2;
-    private Carta[] cemiterioJogador1;
-    private Carta[] cemiterioJogador2;
-    public Object jogador3;
-    public Object jogador4;
+   
 
     public Arena(Lobby jogador1, Lobby jogador2) {
         this.jogador1 = jogador1;
@@ -24,43 +17,38 @@ public class Arena {
         this.campoJogador2 = new Carta[2][5];
         this.pontosVidaJogador1 = 20;
         this.pontosVidaJogador2 = 20;
-        this.maoJogador1 = new Carta[10];
-        this.maoJogador2 = new Carta[10];
-        this.manaMaximaJogador1 = 0;
-        this.manaMaximaJogador2 = 0;
-        this.cemiterioJogador1 = new Carta[100];
-        this.cemiterioJogador2 = new Carta[100];
     }
-    public void sacar(Lobby jogador,Deck deck) {
+    public void sacar(Lobby jogador, Deck deck) {
         if (jogador.getDeck().getQuantidadeCartas() >= 7) {
-            Carta cartaSacada = ((Object) jogador.getDeck()).sacarCartaAleatoria();
-            String cartaNoDeck;
-             for (int i = 0; i < 7; i++) {
-                deck.removerCarta(cartaNoDeck);
+            Carta cartaSacada;
+            Carta cartaNoDeck;
+            for (int i = 0; i < 7; i++) {
+                cartaSacada = jogador.getDeck().sacarCartaAleatoria();
+                deck.removerCarta(cartaSacada);
                 jogador.adicionarCartaNaMao(cartaSacada);
-             }
-             int cartasParaRetornar = Math.min(5,jogador.getTamanhoMao());
-             for (int i = 0; i < cartasParaRetornar; i++) {
+            }
+            int cartasParaRetornar = Math.min(5, jogador.getTamanhoMao());
+            for (int i = 0; i < cartasParaRetornar; i++) {
+                cartaNoDeck = jogador.getDeck().sacarCartaAleatoria();
                 jogador.removerCartaDaMao(i);
                 deck.adicionarCarta(cartaNoDeck);
-             }
-             for (int i = 0; i < cartasParaRetornar; i++) {
+            }
+            for (int i = 0; i < cartasParaRetornar; i++) {
+                cartaNoDeck = jogador.getDeck().sacarCartaAleatoria();
                 deck.removerCarta(cartaNoDeck);
-                jogador.adicionarCartaNaMao(cartaSacada);
-             }
-         
-
-            
+                jogador.adicionarCartaNaMao(cartaNoDeck);
+            }
         } else {
             System.out.println("Não há cartas suficientes no deck para fazer um saque.");
+        }
     }
-    }
+    
 
     public void iniciarPartida() {
-        // Lógica para iniciar a partida.
+    
         System.out.println("A partida começou!");
 
-        // Sorteia aleatoriamente o jogador que começa.
+    
         if (new Random().nextBoolean()) {
             System.out.println("Jogador 1 começa.");
             turno(jogador1, jogador2);
@@ -70,60 +58,57 @@ public class Arena {
         }
     }
 
-    private void turno(Lobby jogadorAtivo, Lobby jogadorOponente) {
+    protected void turno(Lobby jogadorAtivo, Lobby jogadorOponente) {
         System.out.println("Turno do Jogador " + jogadorAtivo.getNome() + ".");
 
-        // Realiza as ações do turno (Compra, Posicionamento, Ataque).
+        
         comprar(jogadorAtivo);
         posicionamento(jogadorAtivo);
         ataque(jogadorAtivo, jogadorOponente);
 
-        // Verifica se o jogo terminou.
+        
         if (pontosVidaJogador1 <= 0 || pontosVidaJogador2 <= 0) {
-            terminarPartida();
+            terminarPartida(jogadorAtivo,jogadorOponente);
         } else {
-            // Passa o turno para o próximo jogador.
+            
             turno(jogadorOponente, jogadorAtivo);
         }
     }
 
-    private void comprar(Lobby jogador) {
+    public void comprar(Lobby jogador) {
         if (jogador.getDeck().getQuantidadeCartas() > 1) {
-            // O jogador tem pelo menos 2 cartas no deck.
-            // Sorteia uma carta aleatoriamente.
-            Carta cartaSacada = ((Object) jogador.getDeck()).sacarCartaAleatoria();
+ 
+            Carta cartaSacada = (jogador.getDeck()).sacarCartaAleatoria();
 
-            // Renova a mana máxima.
+            
             jogador.setManaMaxima(jogador.getManaMaxima() + 1);
 
-            // Adiciona a carta à mão do jogador.
+            
             jogador.adicionarCartaNaMao(cartaSacada);
 
             System.out.println("Jogador " + jogador.getNome() + " sacou uma carta: " + cartaSacada.getNome());
         }
     }
 
-    private void posicionamento(Lobby jogador) {
+    public void posicionamento(Lobby jogador) {
         if (jogador.getManaMaxima() > 0) {
-            // O jogador tem mana para posicionar uma carta.
-            // Vamos assumir que a posição na mão onde a carta será selecionada aleatoriamente.
+            
             int posicaoMao = new Random().nextInt(jogador.getTamanhoMao());
 
             Carta cartaSelecionada = jogador.getCartaNaMao(posicaoMao);
 
             if (cartaSelecionada != null) {
-                // O jogador tem uma carta na posição selecionada.
-                // Posicione a carta no campo (segunda linha).
+ 
                 if (jogador == jogador1) {
                     campoJogador1[1][posicaoMao] = cartaSelecionada;
                 } else {
                     campoJogador2[1][posicaoMao] = cartaSelecionada;
                 }
 
-                // Reduz a mana máxima.
+                
                 jogador.setManaMaxima(jogador.getManaMaxima() - 1);
 
-                // Remove a carta da mão do jogador.
+                
                 jogador.removerCartaDaMao(posicaoMao);
 
                 System.out.println("Jogador " + jogador.getNome() + " posicionou uma carta no campo: " + cartaSelecionada.getNome());
@@ -131,15 +116,38 @@ public class Arena {
         }
     }
 
-    private void ataque(Lobby jogadorAtivo, Lobby jogadorOponente) {
-        // Implemente a lógica de ataque aqui, comparando as cartas nos campos.
-        // Você pode usar um loop para verificar as posições no campo de ambos os jogadores
-        // e calcular o dano de acordo com as cartas e regras do jogo.
+    public void ataque(Lobby jogadorAtivo, Lobby jogadorOponente) {
+        System.out.println("Ataque de  " + jogadorAtivo.getNome());
+        Carta[][] campoAtivo = (jogadorAtivo == jogador1) ? campoJogador1 : campoJogador2;
+        Carta[][] campoOponente = (jogadorAtivo == jogador1) ? campoJogador2 : campoJogador1;
+        for (int i = 0; i < campoAtivo.length; i++) {
+            for (int j = 0; j < campoAtivo[i].length; j++) {
+                Carta cartaAtiva = campoAtivo[i][j];
+
+                if (cartaAtiva != null) {
+                    int posicaoAlvo = new Random().nextInt(campoOponente[i].length);
+                    Carta cartaAlvo = campoOponente[i][posicaoAlvo];
+                    if (cartaAlvo != null) {
+                        int dano = cartaAtiva.getAtaque() - cartaAlvo.getDefesa();
+    
+
+                        jogadorOponente.diminuirPontosVida(dano);
+    
+                }
+                if (cartaAlvo.getPontosVida() <= 0) {
+                    jogadorOponente.adicionarCartaAoCemiterio(cartaAlvo);
+                    campoOponente[i][posicaoAlvo] = null;
+                }
+                System.out.println("Jogador " + jogadorAtivo.getNome() + " atacou com " + cartaAtiva.getNome() + " causando " + cartaAtiva.getAtaque() + " de dano a carta " + cartaAlvo.getNome() + " de " + jogadorOponente.getNome());
+    }
+    
+            }
+        
+        }
     }
 
-    private void terminarPartida() {
-        // Implemente a lógica para encerrar a partida e declarar o vencedor.
-    }
+
+   
 
     public int getPontosVidaJogador1() {
         return pontosVidaJogador1;
@@ -202,4 +210,5 @@ public class Arena {
         System.out.println("Jogador " + perdedor.getNome() + " ganhou 10 card coins.");
     }
 }
+
 

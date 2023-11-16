@@ -1,20 +1,21 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Deck {
-    private List<String> cartas;
+    private List<Carta> cartas;
     private boolean disponibilidade;
-    private List<String> inventario2;
+    private List<Carta> inventario2;
 
-    public Deck(String nome) {
+    public Deck(Carta nome) {
         this.cartas = new ArrayList<>();
         this.disponibilidade = false;
         this.inventario2 = new ArrayList<>();
     }
      
 
-    public void adicionarCarta(String carta) {
+    public void adicionarCarta(Carta carta) {
         if (podeAdicionarCarta(carta)) {
             cartas.add(carta);
             removerDoInventario(carta);
@@ -22,7 +23,7 @@ public class Deck {
         }
     }
 
-    public void removerCarta(String carta) {
+    public void removerCarta(Carta carta) {
         if (cartas.contains(carta)) {
             cartas.remove(carta);
             adicionarAoInventario(carta);
@@ -30,23 +31,23 @@ public class Deck {
         }
     }
 
-    private boolean podeAdicionarCarta(String carta) {
+    private boolean podeAdicionarCarta(Carta carta) {
         int quantidadeAtual = cartas.size();
         if (quantidadeAtual >= 60) {
             return false; // Não é possível adicionar mais cartas, o deck já tem 60 ou mais cartas.
         }
 
         int quantidadeNoDeck = contarCartasNoDeck(carta);
-        if (quantidadeNoDeck >= 3 && !carta.equals("mana")) {
+        if (quantidadeNoDeck >= 3 && !carta.getTipo().equals("mana")) {
             return false; // Não é possível adicionar mais cartas repetidas (exceto mana).
         }
 
         return inventario2.contains(carta); // Verifica se a carta está no inventário.
     }
 
-    private int contarCartasNoDeck(String carta) {
+    private int contarCartasNoDeck(Carta carta) {
         int count = 0;
-        for (String c : cartas) {
+        for (Carta c : cartas) {
             if (c.equals(carta)) {
                 count++;
             }
@@ -54,11 +55,11 @@ public class Deck {
         return count;
     }
 
-    private void removerDoInventario(String carta) {
+    private void removerDoInventario(Carta carta) {
         inventario2.remove(carta);
     }
 
-    private void adicionarAoInventario(String carta) {
+    private void adicionarAoInventario(Carta carta) {
         inventario2.add(carta);
     }
 
@@ -72,5 +73,18 @@ public class Deck {
 
     public int getQuantidadeCartas() {
         return cartas.size();
+    }
+     public Carta sacarCartaAleatoria() {
+        if (!cartas.isEmpty()) {
+            Random random = new Random();
+            int indiceCartaAleatoria = random.nextInt(cartas.size());
+            Carta cartaSacada = cartas.remove(indiceCartaAleatoria);
+            adicionarAoInventario(cartaSacada);
+            atualizarDisponibilidade();
+            return cartaSacada;
+        } else {
+            System.out.println("O deck está vazio. Não é possível sacar uma carta.");
+            return null;
+        }
     }
 }
