@@ -1,19 +1,22 @@
+ import java.util.Random;
+
 public class Carta {
     private String nome;
     private String imagem;
     private String tipo;
-    private String raridade;
+    private Raridade raridade;
     protected int ataque;
     protected int defesa;
     private int custo;
     private int habilidade = 0;
     private int quantidade;
+    private int pontosVida;
 
-    public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, int quantidade) {
+    public Carta(String nome, String imagem, String tipo, Raridade raridade, int ataque, int defesa, int custo, int quantidade) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
-        this.raridade = raridade;
+        this.raridade = gerarRaridade();
         this.ataque = ataque;
         this.defesa = defesa;
         this.custo = custo;
@@ -44,10 +47,10 @@ public class Carta {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public String getRaridade() {
+    public Raridade getRaridade() {
         return raridade;
     }
-    public void setRaridade(String raridade) {
+    public void setRaridade(Raridade raridade) {
         this.raridade = raridade;
     }
     public int getAtaque() {
@@ -86,6 +89,20 @@ public class Carta {
         }
     }
     public int getPontosVida() {
-        return 0;
+        return pontosVida;
+    }
+    private static Raridade gerarRaridade() {
+        Random random = new Random();
+        double probabilidadeTotal = 0.0;
+        double probabilidadeAleatoria = random.nextDouble();
+
+        for (Raridade raridade : Raridade.values()) {
+            probabilidadeTotal += raridade.getProbabilidade();
+            if (probabilidadeAleatoria <= probabilidadeTotal) {
+                return raridade;
+            }
+        }
+ 
+        return Raridade.COMUM;
     }
 }
