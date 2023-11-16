@@ -12,6 +12,8 @@ public class Lobby {
     private int pontosVida;
     private Carta[] cemiterio;
     private int cardCoins;
+   
+    
 
     public Lobby(String nome, Deck deck, String modoJogo) {
         this.nome = nome;
@@ -27,18 +29,34 @@ public class Lobby {
     public void setNome(String nome) {
         this.nome = nome;
     }
+   
 
-    public void selecionarDeck() {
+
+    public void selecionarDeck() throws IrregularDeckException {
        if (deck.isDisponivel()) {
        
         disponibilidade2 = true;  
-       }
-       disponibilidade2 = false;
+       } else {
+            IrregularDeckException e2 = new IrregularDeckException();
+            throw e2;
+       } 
+        
     }
+    public void selecionarDecKValido() {
+        try {
+            selecionarDeck();
+        } catch (IrregularDeckException e2) {
+            e2.getMessage();
+        }
+    }
+    /*public Usuario[] preencherPareamento() {
+        for(int i )
+    }*/
 
     public void selecionarModoJogo(String modo) {
         modoJogo = modo;
     }
+
 
     public boolean buscarAdversarioDupla(List<Lobby> lobbies) {
     

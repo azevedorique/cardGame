@@ -56,9 +56,9 @@ public class Loja {
         inventario.add(carta);
     }
 
-    public void buyBooster() {
+    public void buyBooster() throws InsuficientCoinException {
         int precoBooster = promocao ? 300 : 200; // Preço 50% mais caro se estiver em promoção
-        try {
+        
             if (cardCoins >= precoBooster) {
                 this.cardCoins -= precoBooster;
                 
@@ -67,20 +67,29 @@ public class Loja {
                 for (Carta card : booster) {
                     adicionarAoInventario(card);
                 }
-                System.out.println("Booster adquirido");
+            
                 if (contarCartasTipoEspecifico() >= 3) {
                     int valor = 20;
                     this.cardCoins += valor;
                     System.out.println("Você já tem 3 cartas desse tipo! No lugar das cartas você irá receber " + valor + " cardcoins");
                 }
             } else  {
-                throw new InsuficientCoinException(cardCoins);
+                InsuficientCoinException e1 = new InsuficientCoinException(this.getCardCoins());
+                throw e1;
                 } 
-            }
-                catch (InsuficientCoinException e1) {
-                    e1.getMessage();
-            }
+            
+                
         }
+       public void realizarCompra() {
+        try {
+            buyBooster();
+            System.out.println("Booster adquirido");
+        }
+        catch (InsuficientCoinException e1) {
+            System.out.println("Insira mais card coins!");
+            e1.getMessage();
+        }
+       } 
     
 
     public List<Carta> abrirBooster() {
