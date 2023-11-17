@@ -32,7 +32,7 @@ public class Lobby {
    
 
 
-    public void selecionarDeck() throws IrregularDeckException {
+    private void selecionarDeck() throws IrregularDeckException {
        if (deck.isDisponivel()) {
        
         disponibilidade2 = true;  
@@ -49,16 +49,14 @@ public class Lobby {
             e2.getMessage();
         }
     }
-    /*public Usuario[] preencherPareamento() {
-        for(int i )
-    }*/
+ 
 
     public void selecionarModoJogo(String modo) {
         modoJogo = modo;
     }
 
 
-    public boolean buscarAdversarioDupla(List<Lobby> lobbies) {
+    public boolean buscarAdversarioDupla(List<Lobby> lobbies) throws TimeOutException {
     
         if (modoJogo.equals("Modo Dupla")) {
             
@@ -81,11 +79,20 @@ public class Lobby {
 
                 iniciarPartidaEmDupla(this, lobbiesDisponiveis.get(index1), lobbiesDisponiveis.get(index2),lobbiesDisponiveis.get(index3));
                 return true;
+            }  else {
+                try {
+                
+                    TimeOutException e3 = new TimeOutException();
+                    throw e3;
+                }
+                catch(TimeOutException e3) {
+                    e3.getMessage();
+                }
             }
         }
         return false; 
     }
-    public boolean buscarAdversario(List<Lobby> lobbies) {
+    public boolean buscarAdversario(List<Lobby> lobbies) throws TimeOutException {
         if (modoJogo.equals("Modo Single Player")) {
 
         List<Lobby> lobbies2 = lobbies;
@@ -93,6 +100,15 @@ public class Lobby {
             if (lobby != this && lobby.isDisponivel() && lobby.getModoJogo().equals("Modo Single Player")) {
                 iniciarPartida(this,lobby);
                 return true;
+            } if(lobbies2.size()<2) {
+                try {
+                
+                    TimeOutException e3 = new TimeOutException();
+                    throw e3;
+                }
+                catch(TimeOutException e3) {
+                    e3.getMessage();
+                }
             }
         }
     }
@@ -220,4 +236,4 @@ public class Lobby {
    
 
   
-}
+} 
