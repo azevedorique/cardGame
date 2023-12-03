@@ -112,10 +112,10 @@ public class Loja {
 
         for (int i = 0; i < 12; i++) {
             if (random.nextDouble() <= chanceCartaUnica) {
-                // Adicione aqui a lógica para criar uma carta única
+                
                 booster.add(new CartaUnica());
             } else {
-                // Adicione aqui a lógica para criar uma carta comum
+            
                 booster.add(new CartaComum());
             }
         }
