@@ -1,6 +1,9 @@
  import java.util.Random;
 
 public class Carta {
+    //Instância única da classe carta
+    private static Carta instance;
+
     private String nome;
     private String imagem;
     private String tipo;
@@ -12,7 +15,8 @@ public class Carta {
     private int quantidade;
     private int pontosVida;
 
-    public Carta(String nome, String imagem, String tipo, Raridade raridade, int ataque, int defesa, int custo, int quantidade) {
+    //O construtor está privado para evitar instâncias externas
+    private Carta(String nome, String imagem, String tipo, Raridade raridade, int ataque, int defesa, int custo, int quantidade) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
@@ -27,6 +31,15 @@ public class Carta {
            this.quantidade = Math.min(quantidade,3);
         }
     }
+
+    //Método público para obter a instância única da Arena
+    public static Carta getInstance(String nome, String imagem, String tipo, Raridade raridade, int ataque, int defesa, int custo, int quantidade) {
+        if (instance == null) {
+            instance = new Carta(nome, imagem, tipo, raridade, ataque, defesa, custo, quantidade);
+        }
+        return instance;
+    }
+
     public Carta() {
     }
     public String getNome() {
@@ -91,7 +104,8 @@ public class Carta {
     public int getPontosVida() {
         return pontosVida;
     }
-    private static Raridade gerarRaridade() {
+    
+    private Raridade gerarRaridade() {
         Random random = new Random();
         double probabilidadeTotal = 0.0;
         double probabilidadeAleatoria = random.nextDouble();
@@ -102,7 +116,7 @@ public class Carta {
                 return raridade;
             }
         }
- 
+
         return Raridade.COMUM;
     }
 }
