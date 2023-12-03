@@ -2,6 +2,9 @@
 import java.util.Random;
 
 public class Arena {
+
+    private static Arena instance;
+
     protected Lobby jogador1;
     protected Lobby jogador2;
     protected Carta[][] campoJogador1;
