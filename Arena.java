@@ -12,8 +12,7 @@ public class Arena {
     protected int pontosVidaJogador1;
     protected int pontosVidaJogador2;
    
-    //O construtor está privado para evitar instâncias externas
-    private Arena(Lobby jogador1, Lobby jogador2) {
+    public Arena(Lobby jogador1, Lobby jogador2) {
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
         this.campoJogador1 = new Carta[2][5];
@@ -21,8 +20,7 @@ public class Arena {
         this.pontosVidaJogador1 = 20;
         this.pontosVidaJogador2 = 20;
     }
-    
-    //Método público para obter a instância única da Arena
+
     public static Arena getInstance(Lobby jogador1, Lobby jogador2) {
         if (instance == null) {
             instance = new Arena(jogador1, jogador2);

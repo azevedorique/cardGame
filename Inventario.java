@@ -1,6 +1,7 @@
 public class Inventario {
 
     private static Inventario instance;
+    
     private Carta[] carta = new Carta[200];
     private int nivelAtual;
     private int cardCoins;
