@@ -69,10 +69,10 @@ public class Arena {
         
         if (pontosVidaJogador1 <= 0 || pontosVidaJogador2 <= 0) {
             terminarPartida(jogadorAtivo,jogadorOponente);
-        } else {
+        } 
             
-            turno(jogadorOponente, jogadorAtivo);
-        }
+          
+        
     }
 
     public void comprar(Lobby jogador) {
@@ -169,7 +169,7 @@ public class Arena {
             terminarPartida(jogador1, jogador2);
         }
 
-        turno2(jogadorOponente, jogadorAtivo);
+        
     }
 
     private void calcularDano(Lobby jogadorAtivo, Lobby jogadorOponente) {
