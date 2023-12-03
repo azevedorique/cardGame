@@ -70,17 +70,21 @@ public class Arena {
 
     protected void turno(Lobby jogadorAtivo, Lobby jogadorOponente) {
         System.out.println("Turno do Jogador " + jogadorAtivo.getNome() + ".");
-
+ 
         
         comprar(jogadorAtivo);
         posicionamento(jogadorAtivo);
         ataque(jogadorAtivo, jogadorOponente);
+ 
 
-        
-        if (pontosVidaJogador1 <= 0 || pontosVidaJogador2 <= 0) {
-            terminarPartida(jogadorAtivo,jogadorOponente);
-        } 
-            
+        calcularDano(jogadorAtivo, jogadorOponente);
+        calcularDano(jogadorOponente, jogadorAtivo);
+
+        if (pontosVidaJogador1 <= 0) {
+            terminarPartida(jogador2, jogador1);
+        } else if (pontosVidaJogador2 <= 0) {
+            terminarPartida(jogador1, jogador2);
+        }
           
         
     }
@@ -126,7 +130,7 @@ public class Arena {
         }
     }
 
-    public void ataque(Lobby jogadorAtivo, Lobby jogadorOponente) {
+   private void ataque(Lobby jogadorAtivo, Lobby jogadorOponente) {
         System.out.println("Ataque de  " + jogadorAtivo.getNome());
         Carta[][] campoAtivo = (jogadorAtivo == jogador1) ? campoJogador1 : campoJogador2;
         Carta[][] campoOponente = (jogadorAtivo == jogador1) ? campoJogador2 : campoJogador1;
@@ -169,6 +173,12 @@ public class Arena {
 
     private void turno2(Lobby jogadorAtivo, Lobby jogadorOponente) {
         System.out.println("Turno do Jogador " + jogadorAtivo.getNome() + ".");
+ 
+        
+        comprar(jogadorAtivo);
+        posicionamento(jogadorAtivo);
+        ataque(jogadorAtivo, jogadorOponente);
+ 
 
         calcularDano(jogadorAtivo, jogadorOponente);
         calcularDano(jogadorOponente, jogadorAtivo);
