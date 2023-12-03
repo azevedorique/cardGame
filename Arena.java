@@ -222,5 +222,3 @@ public class Arena {
         System.out.println("Jogador " + perdedor.getNome() + " ganhou 10 card coins.");
     }
 }
-
-

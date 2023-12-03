@@ -1,19 +1,27 @@
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Deck {
+
+    private static Deck instance;
+
     private List<Carta> cartas;
     private boolean disponibilidade;
     private List<Carta> inventario2;
 
-    public Deck(Carta nome) {
+    private Deck() {
         this.cartas = new ArrayList<>();
         this.disponibilidade = false;
         this.inventario2 = new ArrayList<>();
     }
-     
+    
+    public static Deck getInstance() {
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
+    }
 
     public void adicionarCarta(Carta carta) {
         if (podeAdicionarCarta(carta)) {
@@ -74,7 +82,8 @@ public class Deck {
     public int getQuantidadeCartas() {
         return cartas.size();
     }
-     public Carta sacarCartaAleatoria() {
+
+    public Carta sacarCartaAleatoria() {
         if (!cartas.isEmpty()) {
             Random random = new Random();
             int indiceCartaAleatoria = random.nextInt(cartas.size());
